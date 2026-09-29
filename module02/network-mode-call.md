@@ -23,6 +23,11 @@ Write 4-5 sentences in your own words. Cover all three things below, then delete
 3. What bridged costs you  -> the guest is exposed on the real network instead of
    hidden behind the host, it depends on that network handing out an address, and some
    networks (campus or guest Wi-Fi) block it.
--->
 
-`<write your paragraph here>`
+I would set the network adapter to Bridged.
+
+This works because the VM gets its own IP address on the room’s network, so other machines on that network can connect to the VM directly. Nothing needs to be changed on the laptop itself.
+
+I would reject NAT because it hides the VM behind the laptop’s network connection. Other machines cannot normally initiate connections to the VM through NAT unless port forwarding is configured on the host, which the requirement does not allow.
+
+The downside of Bridged networking is that the VM is exposed directly to the real network. It needs to obtain its own network address, and some networks—especially managed or restricted ones—may block or limit bridged connections.
